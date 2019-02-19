@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from '../components/head'
 import localStorage from "../utils/storage"
+import Link from 'next/link'
 import { skin, setSkinStyle } from '../utils/skin'
 import style from "./skin.styl?module"
 const timeout = (ms, result) => {
@@ -25,13 +26,12 @@ class Home extends React.Component {
   setCurrentSkin (key) {
     localStorage.setSkin(key)
     setSkinStyle(skin[key])
-    console.log(1)
   }
   render() {
     return (
       <div>
       <Head title="Home" />
-      
+      <div>Hello World. <Link href='/about'><a>About</a></Link></div>
       <h1 className="skin-app-header">Hello {this.props.userName}!</h1> 
       
       <div>
@@ -57,7 +57,7 @@ class Home extends React.Component {
 
 
 Home.getInitialProps = async () => {
-  return await timeout(3000, {userName: 'Morgan1'});
+  return await timeout(100, {userName: 'Morgan1'});
   
 };
 
